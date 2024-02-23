@@ -49,25 +49,25 @@ void S_Renderer::Notify(const Message& l_message){
 	}
 }
 
-void S_Renderer::Render(Window* l_wind, unsigned int l_layer)
-{
-	EntityManager* entities = m_systemManager->GetEntityManager();
-	for(auto &entity : m_entities){
-		C_Position* position = entities->GetComponent<C_Position>(entity, Component::Position);
-		if(position->GetElevation() < l_layer){ continue; }
-		if(position->GetElevation() > l_layer){ break; }
-		C_Drawable* drawable = nullptr;
-		if (!entities->HasComponent(entity, Component::SpriteSheet)){ continue; }
-		drawable = entities->GetComponent<C_Drawable>(entity, Component::SpriteSheet);
-		sf::FloatRect drawableBounds;
-		drawableBounds.left = position->GetPosition().x - (drawable->GetSize().x / 2);
-		drawableBounds.top = position->GetPosition().y - drawable->GetSize().y;
-		drawableBounds.width = drawable->GetSize().x;
-		drawableBounds.height = drawable->GetSize().y;
-		if (!l_wind->GetViewSpace().intersects(drawableBounds)){ continue; }
-		drawable->Draw(l_wind->GetRenderWindow());
-	}
-}
+// void S_Renderer::Render(Window* l_wind, unsigned int l_layer)
+// {
+// 	EntityManager* entities = m_systemManager->GetEntityManager();
+// 	for(auto &entity : m_entities){
+// 		C_Position* position = entities->GetComponent<C_Position>(entity, Component::Position);
+// 		if(position->GetElevation() < l_layer){ continue; }
+// 		if(position->GetElevation() > l_layer){ break; }
+// 		C_Drawable* drawable = nullptr;
+// 		if (!entities->HasComponent(entity, Component::SpriteSheet)){ continue; }
+// 		drawable = entities->GetComponent<C_Drawable>(entity, Component::SpriteSheet);
+// 		sf::FloatRect drawableBounds;
+// 		drawableBounds.left = position->GetPosition().x - (drawable->GetSize().x / 2);
+// 		drawableBounds.top = position->GetPosition().y - drawable->GetSize().y;
+// 		drawableBounds.width = drawable->GetSize().x;
+// 		drawableBounds.height = drawable->GetSize().y;
+// 		if (!l_wind->GetViewSpace().intersects(drawableBounds)){ continue; }
+// 		drawable->Draw(l_wind->GetRenderWindow());
+// 	}
+// }
 
 void S_Renderer::SetSheetDirection(const EntityId& l_entity, const Direction& l_dir)
 {

@@ -1,16 +1,16 @@
 #include "S_SheetAnimation.h"
 #include "System_Manager.h"
 
-S_SheetAnimation::S_SheetAnimation(SystemManager* l_systemMgr)
-	: S_Base(System::SheetAnimation,l_systemMgr)
-{
-	Bitmask req;
-	req.TurnOnBit((unsigned int)Component::SpriteSheet);
-	req.TurnOnBit((unsigned int)Component::State);
-	m_requiredComponents.push_back(req);
+// S_SheetAnimation::S_SheetAnimation(SystemManager* l_systemMgr)
+// 	: S_Base(System::SheetAnimation,l_systemMgr)
+// {
+// 	Bitmask req;
+// 	req.TurnOnBit((unsigned int)Component::SpriteSheet);
+// 	req.TurnOnBit((unsigned int)Component::State);
+// 	m_requiredComponents.push_back(req);
 
-	m_systemManager->GetMessageHandler()->Subscribe(EntityMessage::State_Changed,this);
-}
+// 	m_systemManager->GetMessageHandler()->Subscribe(EntityMessage::State_Changed,this);
+// }
 
 S_SheetAnimation::~S_SheetAnimation(){}
 
